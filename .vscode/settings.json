@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {},
+  "[scss]": {
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {},
+    "editor.defaultFormatter": null
+  },
+  "scss.lint.enabled": false,
+  "stylelint.enable": false,
+  "prettier.enable": false
+}

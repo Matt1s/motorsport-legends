@@ -16,7 +16,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background-color: #374151;
+  background-color: #777777;
   transform: translateX(-50%);
 }
 
@@ -25,7 +25,7 @@
   left: 50%;
   top: 0;
   width: 1px;
-  background-color: #eab308;
+  background-color: #EAC666;
   transform: translateX(-50%);
   transition: height 0.3s ease;
   height: 0;
@@ -49,11 +49,11 @@
 }
 
 .scroll-nav__item:hover .scroll-nav__label {
-  color: #fbbf24;
+  color: #EAC666;
 }
 
 .scroll-nav__item:hover .scroll-nav__dot {
-  border-color: #fbbf24;
+  border-color: #EAC666;
 }
 
 .scroll-nav__item:nth-of-type(1) .scroll-nav__label,
@@ -62,7 +62,7 @@
 }
 
 .scroll-nav__item:nth-of-type(1) .scroll-nav__dot {
-  right: 22px;
+  right: 23px;
 }
 
 .scroll-nav__item:nth-of-type(2) .scroll-nav__label {
@@ -70,13 +70,13 @@
 }
 
 .scroll-nav__item:nth-of-type(2) .scroll-nav__dot {
-  top: 18px;
-  right: 27px;
+  top: 15px;
+  right: 29px;
 }
 
 .scroll-nav__label {
   font-size: 0.875rem;
-  color: #9ca3af;
+  color: #777777;
   position: relative;
   right: 22px;
   transition: color 0.3s ease;
@@ -97,6 +97,6 @@
 }
 
 .scroll-nav__dot--active {
-  border-color: #eab308;
-  background-color: #eab308;
+  border-color: #EAC666;
+  background-color: #EAC666;
 }

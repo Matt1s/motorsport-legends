@@ -10,56 +10,72 @@ $border-light: #303030;
 $gray: #9E9E9E;
 $gray-dark: #404040;
 
+// Z-index scale
+$z-animated: 1;
+$z-hero: 2;
+$z-featured: 3;
+$z-header: 5;
+
+// Spacing
+$spacing-header-offset: -12.5rem;
+$spacing-header-delay: 0.75s;
+$spacing-formula-top: 20rem;
+$spacing-scroller-top: -5rem;
+$spacing-featured-top: 0rem;
+
 // Font Face Declarations
 @font-face {
   font-family: 'Gilmer Medium';
   src: url('../fonts/Gilmer-Medium.otf') format('opentype');
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Gilmer Regular';
   src: url('../fonts/Gilmer-Regular.otf') format('opentype');
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter Medium';
   src: url('../fonts/Inter-Medium.ttf') format('truetype');
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter Regular';
   src: url('../fonts/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter SemiBold';
   src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
   font-weight: 600;
+  font-display: swap;
 }
 
 // Keyframes
 @keyframes slideIn {
   from {
-    top: -300px;
+    transform: translateY(-18.75rem);
     opacity: 0;
   }
-
   to {
-    top: 0;
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes slideDown {
   from {
-    top: -300px;
+    top: -10rem;
     opacity: 0;
   }
-
   to {
     top: 0;
     opacity: 1;
@@ -68,14 +84,11 @@ $gray-dark: #404040;
 
 @keyframes slideLeftToRight {
   from {
-    left: -100vw;
-    transform: scale(0.1);
+    transform: translateX(-100vw) scale(0.1);
     opacity: 0;
   }
-
   to {
-    left: -300px;
-    transform: scale(1);
+    transform: translateX(-18.75rem) scale(1);
     opacity: 1;
   }
 }
@@ -83,26 +96,32 @@ $gray-dark: #404040;
 @keyframes slideRightToLeft {
   from {
     opacity: 0;
-    transform: scale(0.5);
-    right: -100vw;
+    transform: translateX(100vw) scale(0.5);
   }
-
   to {
     opacity: 1;
-    transform: scale(1);
-    right: 0;
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes upAndDown {
-
   0%,
   100% {
-    top: 0;
+    transform: translateY(0);
   }
-
   50% {
-    top: 20px;
+    transform: translateY(1.25rem);
+  }
+}
+
+@keyframes slideUpCards {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -116,34 +135,15 @@ body {
   background-color: $base-color;
   color: $text-color;
   overflow-x: hidden;
-  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-// Animated Elements
-#animated-hero-image {
-  position: absolute;
-  animation: slideIn 0.5s ease-in-out forwards;
-  left: 0;
-  width: 85%;
-  z-index: 1;
-}
-
-#formula {
-  position: absolute;
-  animation: slideLeftToRight 1s ease-in-out forwards;
-  left: -100vw;
-  top: 320px;
-  width: 100%;
-  transform: scale(0.1);
-  z-index: 1;
-}
-
 // Main Layout
 main {
   width: 100%;
+  max-width: 1900px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,27 +152,50 @@ main {
 // Reusable Components
 .cta-primary {
   border-radius: 256px;
-  height: 48px;
-  width: 160px;
+  height: 3rem;
+  width: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: $base-color;
-  font-family: "Inter Medium";
+  font-family: 'Inter Medium';
   font-size: 0.9375rem;
   text-decoration: none;
   background: linear-gradient(211deg, $gold-dark 0%, $gold 45%, $gold 100%);
+  transition: transform 0.2s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
-    transition: transform 0.2s ease-in-out;
+  }
+}
+
+.cta-secondary {
+  height: 3rem;
+  width: 12.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  color: $gold;
+  font-family: 'Inter Medium';
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    text-decoration: underline;
+  }
+
+  img {
+    width: 1.25rem;
   }
 }
 
 .row {
   display: flex;
   align-items: center;
-  gap: 60px;
+  gap: 3.75rem;
 
   &.no-gap {
     margin-left: auto;
@@ -181,110 +204,131 @@ main {
 }
 
 .golden {
-  font-family: "Inter SemiBold";
+  font-family: 'Inter SemiBold';
   color: $gold;
   font-size: 0.75rem;
 }
 
 .silver {
-  font-family: "Inter SemiBold";
+  font-family: 'Inter SemiBold';
   color: $silver;
   font-size: 0.75rem;
 }
 
+// Header
 header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  top: -10rem;
+  padding-top: 1rem;
+  z-index: $z-header;
+  padding-right: 4rem;
+  animation: slideDown 0.75s ease-out $spacing-header-delay forwards;
+  max-width: calc(1530px + 10rem);
+  margin-left: auto;
+
+  .chart-button {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
-    position: relative;
-    top: -200px;
-    z-index: 5;
-      padding-right: 4rem;
-    animation: slideDown 0.75s ease-out 0.75s forwards;
-    max-width: calc(1530px + 10rem);
-    margin-left: auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0 8rem 0 3rem;
 
-    .chart-button {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 0 128px 0 48px;
-
-      img {
-        width: 18px;
-      }
-
-      a {
-        color: $gold;
-        font-family: "Inter SemiBold";
-        font-size: 0.75rem;
-      }
+    img {
+      width: 1.125rem;
     }
 
-    nav img {
-      width: 36px;
-      cursor: pointer;
+    a {
+      color: $gold;
+      font-family: 'Inter SemiBold';
+      font-size: 0.75rem;
     }
   }
 
-  #logo img {
-    height: 80px;
-    width: auto;
+  nav img {
+    width: 2.25rem;
+    cursor: pointer;
   }
+}
 
-  .select-wrapper {
-    position: relative;
-    display: inline-block;
+#logo img {
+  height: 5rem;
+  width: auto;
+}
 
-    select {
-      width: 276px;
-      height: 48px;
-      border-radius: 256px;
-      background-color: transparent;
-      border: 1px solid $border-light;
-      color: $gray;
-      padding: 0 4rem 0 1rem;
-      font-family: "Inter Medium";
-      font-size: 0.875rem;
-      cursor: pointer;
-      appearance: none;
+.select-wrapper {
+  position: relative;
+  display: inline-block;
 
-      &:focus {
-        outline: none;
-      }
-    }
+  select {
+    width: 17.25rem;
+    height: 3rem;
+    border-radius: 256px;
+    background-color: transparent;
+    border: 1px solid $border-light;
+    color: $gray;
+    padding: 0 4rem 0 1rem;
+    font-family: 'Inter Medium';
+    font-size: 0.875rem;
+    cursor: pointer;
+    appearance: none;
 
-    &::after {
-      content: "";
-      position: absolute;
-      right: 1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 12.76px;
-      height: 7px;
-      background: url("../icons/select-down.svg") no-repeat center;
-      background-size: contain;
-      pointer-events: none;
+    &:focus {
+      outline: none;
     }
   }
 
-  .prices {
-    border-right: 1px solid $border-medium;
-    padding-right: 48px;
-    .column {
-        width: 120px;
-      }
+  &::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.8rem;
+    height: 0.4375rem;
+    background: url('../icons/select-down.svg') no-repeat center;
+    background-size: contain;
+    pointer-events: none;
   }
+}
 
-  .price {
-    padding-left: 1rem;
-    font-family: "Inter SemiBold";
-    margin-top: 0.35rem;
+.prices {
+  border-right: 1px solid $border-medium;
+  padding-right: 3rem;
+
+  .column {
+    width: 7.5rem;
   }
+}
+
+.price {
+  padding-left: 1rem;
+  font-family: 'Inter SemiBold';
+  margin-top: 0.35rem;
+}
+
 // Hero Section
 #hero {
   position: relative;
-  z-index: 2;
+  z-index: $z-hero;
+}
+
+#animated-hero-image {
+  position: absolute;
+  animation: slideIn 0.5s ease-in-out forwards;
+  left: 0;
+  width: 85%;
+  z-index: $z-animated;
+}
+
+#formula {
+  position: absolute;
+  animation: slideLeftToRight 1s ease-in-out forwards;
+  transform: translateX(-100vw) scale(0.1);
+  top: $spacing-formula-top;
+  width: 100%;
+  z-index: $z-animated;
 }
 
 // Info Section
@@ -292,12 +336,11 @@ header {
   max-width: 1536px;
   margin: 20vh auto 0;
   position: relative;
-  right: -100vw;
-  transform: scale(0.5);
+  transform: translateX(100vw) scale(0.5);
   animation: slideRightToLeft 0.5s ease-in-out 0.3s forwards;
 
   h1 {
-    font-family: "Gilmer Medium";
+    font-family: 'Gilmer Medium';
     font-size: 4.25rem;
     max-width: 750px;
 
@@ -308,81 +351,40 @@ header {
   }
 
   .cta-section {
-    margin-top: 80px;
+    margin-top: 5rem;
     display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .cta-secondary {
-    height: 48px;
-    width: 200px;
-    display: flex;
-    justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    color: $gold;
-    font-family: "Inter Medium";
-    font-size: 0.9375rem;
-    text-decoration: none;
-
-    &:hover {
-      transform: scale(1.1);
-      text-decoration: underline;
-      transition: transform 0.2s ease-in-out;
-    }
-
-    img {
-      width: 20px;
-    }
+    flex: 1;
   }
 
   .coins {
+    flex: 1;
     display: flex;
     align-items: flex-end;
     width: fit-content;
-    margin-left: -100px;
+    margin-left: -6.25rem;
 
     #coin-silver {
-      width: 265px;
+      width: 16.5625rem;
       position: relative;
-      left: 100px;
+      left: 6.25rem;
     }
 
     #coin-gold {
-      width: 518px;
-    }
-  }
-
-  .scroller {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    top: 300px;
-    position: relative;
-
-    img {
-      position: relative;
-      animation: upAndDown 1.5s ease-in-out infinite;
-    }
-
-    .horizontal-line {
-      width: 1px;
-      height: 208px;
-      background-color: $gray-dark;
+      width: 32.375rem;
     }
   }
 }
 
 // Featured Products Section
 #featured-products {
-  margin-top: 350px;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  z-index: 3;
+  z-index: $z-featured;
   background: url('../images/formula-bottom.svg') no-repeat 45vw 45vh / 120%;
   width: 100%;
 
@@ -395,98 +397,161 @@ header {
   }
 
   h3 {
-    font-family: "Gilmer Regular";
+    font-family: 'Gilmer Regular';
     font-size: 1.5rem;
     font-weight: 200;
     margin-bottom: 1rem;
   }
 
   h2 {
-    font-family: "Gilmer Regular";
+    font-family: 'Gilmer Regular';
     font-size: 3.5rem;
     font-weight: 200;
     color: $gold;
-    margin: 8px 0 6rem;
+    margin: 0.5rem 0 3.75rem;
   }
 
   .products-row {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 0.5rem;
     width: 100%;
-    padding-bottom: 8rem;
+    padding-bottom: 5rem;
   }
-                                                                                                                                                                                                                                                                .product-card:hover {
-                                                                                                                                                                                                                                                                  transform: translateY(-5px);
-                                                                                                                                                                                                                                                                }
-                                                                                                                                
-                                                                                                                                                                                                                                                                .product-card.animate {
-                                                                                                                                                                                                                                                                  animation: slideUpCards 0.6s ease-out forwards;
-                                                                                                                                                                                                                                                                }
-                                                                                                                                
-                                                                                                                                                                                                                                                                .product-card:nth-child(1).animate {
-                                                                                                                                                                                                                                                                  animation-delay: 0s;
-                                                                                                                                                                                                                                                                }
-                                                                                                                                
-                                                                                                                                                                                                                                                                .product-card:nth-child(2).animate {
-                                                                                                                                                                                                                                                                  animation-delay: 0.3s;
-                                                                                                                                                                                                                                                                }
-                                                                                                                                
-                                                                                                                                                                                                                                                                .product-card:nth-child(3).animate {
-                                                                                                                                                                                                                                                                  animation-delay: 0.6s;
-                                                                                                                                                                                                                                                                }
-                                                                                                                                
-                                                                                                                                                                                                                                                                @keyframes slideUpCards {
-                                                                                                                                                                                                                                                                  from {
-                                                                                                                                                                                                                                                                    opacity: 0;
-                                                                                                                                                                                                                                                                    transform: translateY(40px);
-                                                                                                                                                                                                                                                                  }
-                                                                                                                                
-                                                                                                                                                                                                                                                                  to {
-                                                                                                                                                                                                                                                                    opacity: 1;
-                                                                                                                                                                                                                                                                    transform: translateY(0);
-                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                }
 
   .product-card {
     flex: 1;
     background-color: #000;
-    border-radius: 8px;
+    border-radius: 0.5rem;
     border: 1px solid $border-dark;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 32px;
+    padding: 2rem;
     opacity: 0;
-      transition: transform 0.3s ease;
-      transform: translateY(40px);
+    transform: translateY(2.5rem);
+    transition: transform 0.3s ease;
 
     img {
-      width: 264px;
+      width: 16.5rem;
     }
 
     h4 {
       font-size: 2rem;
-      font-family: "Gilmer Regular";
+      font-family: 'Gilmer Regular';
       font-weight: 200;
-      margin-top: 32px;
+      margin-top: 2rem;
     }
 
     h5 {
       font-size: 1rem;
       color: $gold;
-      font-family: "Inter Regular";
+      font-family: 'Inter Regular';
       margin: 1rem 0;
     }
 
     .year {
       font-size: 1rem;
-      font-family: "Inter Regular";
+      font-family: 'Inter Regular';
     }
 
     .cta-primary {
-      width: 253px;
-      margin-top: 32px;
+      width: 15.8125rem;
+      margin-top: 2rem;
     }
+
+    &:hover {
+      transform: translateY(-0.3125rem);
+    }
+
+    &.animate {
+      animation: slideUpCards 0.6s ease-out forwards;
+    }
+
+    &:nth-child(1).animate {
+      animation-delay: 0s;
+    }
+
+    &:nth-child(2).animate {
+      animation-delay: 0.3s;
+    }
+
+    &:nth-child(3).animate {
+      animation-delay: 0.6s;
+    }
+  }
+}
+.scroll-nav__label{
+  font-family: "Inter SemiBold"
+}
+  .scroller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    z-index: 5;
+    top: $spacing-scroller-top;
+    position: relative;
+
+    img {
+      position: relative;
+      animation: upAndDown 1.5s ease-in-out infinite;
+    }
+
+    .horizontal-line {
+      width: 1px;
+      height: 13rem;
+      background-color: $gray-dark;
+    }
+  }
+// Responsive
+@media (min-width: 1921px) {
+  #animated-hero-image {
+    max-width: 1620px;
+    /* position in the center */
+    left: 50%;
+    transform: translateX(-50%)!important;
+  }
+  #formula {
+    max-width: 1920px;
+    left: 10%;
+    transform: translateX(-50%);
+  }
+}
+@media(max-width: 1919px){
+  main{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  header{
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  #hero{
+    width: 100%;
+  }
+  .info{
+    justify-content: space-between;
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+@media(max-width: 1650px){
+  .info .coins{
+    position: relative;
+    left: -5rem;
+  }
+  #coin-silver{
+    width: 176px!important;
+  }
+  #coin-gold{
+    width: 345px!important;
+  }
+}
+@media(max-width: 1500px){
+  .info h1{
+    font-size: 3.5rem;
   }
 }

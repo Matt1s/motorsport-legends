@@ -2,46 +2,51 @@
   font-family: 'Gilmer Medium';
   src: url("../fonts/Gilmer-Medium.otf") format("opentype");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Gilmer Regular';
   src: url("../fonts/Gilmer-Regular.otf") format("opentype");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter Medium';
   src: url("../fonts/Inter-Medium.ttf") format("truetype");
   font-weight: 500;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter Regular';
   src: url("../fonts/Inter-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-display: swap;
 }
 
 @font-face {
   font-family: 'Inter SemiBold';
   src: url("../fonts/Inter-SemiBold.ttf") format("truetype");
   font-weight: 600;
+  font-display: swap;
 }
 
 @keyframes slideIn {
   from {
-    top: -300px;
+    transform: translateY(-18.75rem);
     opacity: 0;
   }
   to {
-    top: 0;
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
 @keyframes slideDown {
   from {
-    top: -300px;
+    top: -10rem;
     opacity: 0;
   }
   to {
@@ -52,13 +57,11 @@
 
 @keyframes slideLeftToRight {
   from {
-    left: -100vw;
-    transform: scale(0.1);
+    transform: translateX(-100vw) scale(0.1);
     opacity: 0;
   }
   to {
-    left: -300px;
-    transform: scale(1);
+    transform: translateX(-18.75rem) scale(1);
     opacity: 1;
   }
 }
@@ -66,23 +69,32 @@
 @keyframes slideRightToLeft {
   from {
     opacity: 0;
-    transform: scale(0.5);
-    right: -100vw;
+    transform: translateX(100vw) scale(0.5);
   }
   to {
     opacity: 1;
-    transform: scale(1);
-    right: 0;
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes upAndDown {
   0%,
 100% {
-    top: 0;
+    transform: translateY(0);
   }
   50% {
-    top: 20px;
+    transform: translateY(1.25rem);
+  }
+}
+
+@keyframes slideUpCards {
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -95,10 +107,179 @@ body {
   background-color: #0A0A0A;
   color: #F7F7F7;
   overflow-x: hidden;
-  padding-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+main {
+  width: 100%;
+  max-width: 1900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cta-primary {
+  border-radius: 256px;
+  height: 3rem;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0A0A0A;
+  font-family: 'Inter Medium';
+  font-size: 0.9375rem;
+  text-decoration: none;
+  background: linear-gradient(211deg, #B87C1D 0%, #EAC666 45%, #EAC666 100%);
+  transition: transform 0.2s ease-in-out;
+}
+
+.cta-primary:hover {
+  transform: scale(1.1);
+}
+
+.cta-secondary {
+  height: 3rem;
+  width: 12.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  color: #EAC666;
+  font-family: 'Inter Medium';
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.cta-secondary:hover {
+  transform: scale(1.1);
+  text-decoration: underline;
+}
+
+.cta-secondary img {
+  width: 1.25rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 3.75rem;
+}
+
+.row.no-gap {
+  margin-left: auto;
+  gap: 0;
+}
+
+.golden {
+  font-family: 'Inter SemiBold';
+  color: #EAC666;
+  font-size: 0.75rem;
+}
+
+.silver {
+  font-family: 'Inter SemiBold';
+  color: #BCBCBC;
+  font-size: 0.75rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  top: -10rem;
+  padding-top: 1rem;
+  z-index: 5;
+  padding-right: 4rem;
+  animation: slideDown 0.75s ease-out 0.75s forwards;
+  max-width: calc(1530px + 10rem);
+  margin-left: auto;
+}
+
+header .chart-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 8rem 0 3rem;
+}
+
+header .chart-button img {
+  width: 1.125rem;
+}
+
+header .chart-button a {
+  color: #EAC666;
+  font-family: 'Inter SemiBold';
+  font-size: 0.75rem;
+}
+
+header nav img {
+  width: 2.25rem;
+  cursor: pointer;
+}
+
+#logo img {
+  height: 5rem;
+  width: auto;
+}
+
+.select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.select-wrapper select {
+  width: 17.25rem;
+  height: 3rem;
+  border-radius: 256px;
+  background-color: transparent;
+  border: 1px solid #303030;
+  color: #9E9E9E;
+  padding: 0 4rem 0 1rem;
+  font-family: 'Inter Medium';
+  font-size: 0.875rem;
+  cursor: pointer;
+  appearance: none;
+}
+
+.select-wrapper select:focus {
+  outline: none;
+}
+
+.select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.8rem;
+  height: 0.4375rem;
+  background: url("../icons/select-down.svg") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.prices {
+  border-right: 1px solid #2D2D2D;
+  padding-right: 3rem;
+}
+
+.prices .column {
+  width: 7.5rem;
+}
+
+.price {
+  padding-left: 1rem;
+  font-family: 'Inter SemiBold';
+  margin-top: 0.35rem;
+}
+
+#hero {
+  position: relative;
+  z-index: 2;
 }
 
 #animated-hero-image {
@@ -112,169 +293,22 @@ body {
 #formula {
   position: absolute;
   animation: slideLeftToRight 1s ease-in-out forwards;
-  left: -100vw;
-  top: 320px;
+  transform: translateX(-100vw) scale(0.1);
+  top: 20rem;
   width: 100%;
-  transform: scale(0.1);
   z-index: 1;
-}
-
-main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.cta-primary {
-  border-radius: 256px;
-  height: 48px;
-  width: 160px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #0A0A0A;
-  font-family: "Inter Medium";
-  font-size: 0.9375rem;
-  text-decoration: none;
-  background: linear-gradient(211deg, #B87C1D 0%, #EAC666 45%, #EAC666 100%);
-}
-
-.cta-primary:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.row {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-}
-
-.row.no-gap {
-  margin-left: auto;
-  gap: 0;
-}
-
-.golden {
-  font-family: "Inter SemiBold";
-  color: #EAC666;
-  font-size: 0.75rem;
-}
-
-.silver {
-  font-family: "Inter SemiBold";
-  color: #BCBCBC;
-  font-size: 0.75rem;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  position: relative;
-  top: -200px;
-  z-index: 5;
-  padding-right: 4rem;
-  animation: slideDown 0.75s ease-out 0.75s forwards;
-  max-width: calc(1530px + 10rem);
-  margin-left: auto;
-}
-
-header .chart-button {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 0 128px 0 48px;
-}
-
-header .chart-button img {
-  width: 18px;
-}
-
-header .chart-button a {
-  color: #EAC666;
-  font-family: "Inter SemiBold";
-  font-size: 0.75rem;
-}
-
-header nav img {
-  width: 36px;
-  cursor: pointer;
-}
-
-#logo img {
-  height: 80px;
-  width: auto;
-}
-
-.select-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.select-wrapper select {
-  width: 276px;
-  height: 48px;
-  border-radius: 256px;
-  background-color: transparent;
-  border: 1px solid #303030;
-  color: #9E9E9E;
-  padding: 0 4rem 0 1rem;
-  font-family: "Inter Medium";
-  font-size: 0.875rem;
-  cursor: pointer;
-  appearance: none;
-}
-
-.select-wrapper select:focus {
-  outline: none;
-}
-
-.select-wrapper::after {
-  content: "";
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 12.76px;
-  height: 7px;
-  background: url("../icons/select-down.svg") no-repeat center;
-  background-size: contain;
-  pointer-events: none;
-}
-
-.prices {
-  border-right: 1px solid #2D2D2D;
-  padding-right: 48px;
-}
-
-.prices .column {
-  width: 120px;
-}
-
-.price {
-  padding-left: 1rem;
-  font-family: "Inter SemiBold";
-  margin-top: 0.35rem;
-}
-
-#hero {
-  position: relative;
-  z-index: 2;
 }
 
 .info {
   max-width: 1536px;
   margin: 20vh auto 0;
   position: relative;
-  right: -100vw;
-  transform: scale(0.5);
+  transform: translateX(100vw) scale(0.5);
   animation: slideRightToLeft 0.5s ease-in-out 0.3s forwards;
 }
 
 .info h1 {
-  font-family: "Gilmer Medium";
+  font-family: 'Gilmer Medium';
   font-size: 4.25rem;
   max-width: 750px;
 }
@@ -285,74 +319,33 @@ header nav img {
 }
 
 .info .cta-section {
-  margin-top: 80px;
+  margin-top: 5rem;
   display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.info .cta-secondary {
-  height: 48px;
-  width: 200px;
-  display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  color: #EAC666;
-  font-family: "Inter Medium";
-  font-size: 0.9375rem;
-  text-decoration: none;
-}
-
-.info .cta-secondary:hover {
-  transform: scale(1.1);
-  text-decoration: underline;
-  transition: transform 0.2s ease-in-out;
-}
-
-.info .cta-secondary img {
-  width: 20px;
+  flex: 1;
 }
 
 .info .coins {
+  flex: 1;
   display: flex;
   align-items: flex-end;
   width: fit-content;
-  margin-left: -100px;
+  margin-left: -6.25rem;
 }
 
 .info .coins #coin-silver {
-  width: 265px;
+  width: 16.5625rem;
   position: relative;
-  left: 100px;
+  left: 6.25rem;
 }
 
 .info .coins #coin-gold {
-  width: 518px;
-}
-
-.info .scroller {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
-  top: 300px;
-  position: relative;
-}
-
-.info .scroller img {
-  position: relative;
-  animation: upAndDown 1.5s ease-in-out infinite;
-}
-
-.info .scroller .horizontal-line {
-  width: 1px;
-  height: 208px;
-  background-color: #404040;
+  width: 32.375rem;
 }
 
 #featured-products {
-  margin-top: 350px;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -371,30 +364,72 @@ header nav img {
 }
 
 #featured-products h3 {
-  font-family: "Gilmer Regular";
+  font-family: 'Gilmer Regular';
   font-size: 1.5rem;
   font-weight: 200;
   margin-bottom: 1rem;
 }
 
 #featured-products h2 {
-  font-family: "Gilmer Regular";
+  font-family: 'Gilmer Regular';
   font-size: 3.5rem;
   font-weight: 200;
   color: #EAC666;
-  margin: 8px 0 6rem;
+  margin: 0.5rem 0 3.75rem;
 }
 
 #featured-products .products-row {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
   width: 100%;
-  padding-bottom: 8rem;
+  padding-bottom: 5rem;
+}
+
+#featured-products .product-card {
+  flex: 1;
+  background-color: #000;
+  border-radius: 0.5rem;
+  border: 1px solid #1D1D1D;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(2.5rem);
+  transition: transform 0.3s ease;
+}
+
+#featured-products .product-card img {
+  width: 16.5rem;
+}
+
+#featured-products .product-card h4 {
+  font-size: 2rem;
+  font-family: 'Gilmer Regular';
+  font-weight: 200;
+  margin-top: 2rem;
+}
+
+#featured-products .product-card h5 {
+  font-size: 1rem;
+  color: #EAC666;
+  font-family: 'Inter Regular';
+  margin: 1rem 0;
+}
+
+#featured-products .product-card .year {
+  font-size: 1rem;
+  font-family: 'Inter Regular';
+}
+
+#featured-products .product-card .cta-primary {
+  width: 15.8125rem;
+  margin-top: 2rem;
 }
 
 #featured-products .product-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-0.3125rem);
 }
 
 #featured-products .product-card.animate {
@@ -413,55 +448,81 @@ header nav img {
   animation-delay: 0.6s;
 }
 
-@keyframes slideUpCards {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.scroll-nav__label {
+  font-family: "Inter SemiBold";
 }
 
-#featured-products .product-card {
-  flex: 1;
-  background-color: #000;
-  border-radius: 8px;
-  border: 1px solid #1D1D1D;
+.scroller {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px;
-  opacity: 0;
-  transition: transform 0.3s ease;
-  transform: translateY(40px);
+  gap: 2rem;
+  z-index: 5;
+  top: -5rem;
+  position: relative;
 }
 
-#featured-products .product-card img {
-  width: 264px;
+.scroller img {
+  position: relative;
+  animation: upAndDown 1.5s ease-in-out infinite;
 }
 
-#featured-products .product-card h4 {
-  font-size: 2rem;
-  font-family: "Gilmer Regular";
-  font-weight: 200;
-  margin-top: 32px;
+.scroller .horizontal-line {
+  width: 1px;
+  height: 13rem;
+  background-color: #404040;
 }
 
-#featured-products .product-card h5 {
-  font-size: 1rem;
-  color: #EAC666;
-  font-family: "Inter Regular";
-  margin: 1rem 0;
+@media (min-width: 1921px) {
+  #animated-hero-image {
+    max-width: 1620px;
+    /* position in the center */
+    left: 50%;
+    transform: translateX(-50%) !important;
+  }
+  #formula {
+    max-width: 1920px;
+    left: 10%;
+    transform: translateX(-50%);
+  }
 }
 
-#featured-products .product-card .year {
-  font-size: 1rem;
-  font-family: "Inter Regular";
+@media (max-width: 1919px) {
+  main {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  header {
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  #hero {
+    width: 100%;
+  }
+  .info {
+    justify-content: space-between;
+    max-width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
-#featured-products .product-card .cta-primary {
-  width: 253px;
-  margin-top: 32px;
+@media (max-width: 1650px) {
+  .info .coins {
+    position: relative;
+    left: -5rem;
+  }
+  #coin-silver {
+    width: 176px !important;
+  }
+  #coin-gold {
+    width: 345px !important;
+  }
+}
+
+@media (max-width: 1500px) {
+  .info h1 {
+    font-size: 3.5rem;
+  }
 }
