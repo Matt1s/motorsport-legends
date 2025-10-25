@@ -1,7 +1,180 @@
 $base-color: #0A0A0A;
 $text-color: #F7F7F7;
 
+/* Use ../fonts/Gilmer-Medium.otf & Gilmer-Regular.otf */
+@font-face {
+  font-family: 'Gilmer Medium';
+  src: url('../fonts/Gilmer-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Gilmer Regular';
+  src: url('../fonts/Gilmer-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Use ../fonts/Inter-Medium.ttf, Inter-Regular.ttf & Inter-SemiBold.ttf */
+@font-face {
+  font-family: 'Inter Medium';
+  src: url('../fonts/Inter-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter Regular';
+  src: url('../fonts/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter SemiBold';
+  src: url('../fonts/Inter-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+p {
+  margin: 0;
+}
 body{
   background-color: $base-color;
   color: $text-color;
+  padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  main {
+    max-width: 1536px;
+    width: 100%;
+  }
+  
+  #hero {
+    header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+  
+      .chart-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 16px;
+        padding-left: 48px;
+        padding-right: 128px;
+  
+        img {
+          width: 18px;
+          height: auto;
+        }
+  
+        a {
+          color: #EAC666;
+          font-family: "Inter SemiBold";
+          font-size: 0.75rem;
+        }
+      }
+  
+      nav img {
+        width: 36px;
+        height: auto;
+        cursor: pointer;
+      }
+    }
+  
+    .row {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 60px;
+  
+      &.no-gap {
+        gap: 0;
+      }
+    }
+  
+    #logo img {
+      height: 80px;
+      width: auto;
+    }
+  
+    .select-wrapper {
+      position: relative;
+      display: inline-block;
+  
+      select {
+        width: 276px;
+        font-family: "Inter Medium";
+        height: 48px;
+        border-radius: 256px;
+        background-color: transparent;
+        border: 1px solid #303030;
+        color: #9E9E9E;
+        padding: 0 4rem 0 1rem;
+        font-size: 0.875rem;
+        cursor: pointer;
+  
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+  
+        option {
+          color: #9E9E9E;
+          font-size: 0.875rem;
+        }
+      }
+  
+      &:focus-within select {
+        outline: none;
+      }
+  
+      &::after {
+        content: "";
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12.76px;
+        height: 7px;
+        background: url("../icons/select-down.svg") no-repeat center;
+        background-size: contain;
+        pointer-events: none; // allows clicking through to the select
+      }
+    }
+  
+    .golden {
+      font-family: "Inter SemiBold";
+      color: #EAC666;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+    }
+  
+    .silver {
+      font-family: "Inter SemiBold";
+      color: #BCBCBC;
+      font-size: 0.75rem;
+      margin-bottom: 0;
+    }
+  
+    .prices {
+      border-right: 1px solid #2D2D2D;
+      padding-right: 48px;
+    }
+  
+    .price {
+      padding-left: 1rem;
+      font-family: "Inter SemiBold";
+      margin: 0;
+      margin-top: 0.35rem;
+    }
 }

@@ -10,3 +10,7 @@
 
 - Used extension "Easy Compile" for compiling SASS to CSS
 - Used extension "Live Server" for local development server
+
+## Potential Improvements
+- Sticky header
+- Mobile responsiveness (Currently designed for 1280 - 1920px width screens)
