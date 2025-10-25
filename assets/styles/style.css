@@ -168,55 +168,52 @@ main {
   font-size: 0.75rem;
 }
 
-#hero {
-  position: relative;
-  z-index: 2;
-}
-
-#hero header {
+header {
   display: flex;
   justify-content: space-between;
   width: 100%;
   position: relative;
   top: -200px;
+  z-index: 5;
+  padding-right: 4rem;
   animation: slideDown 0.75s ease-out 0.75s forwards;
-  max-width: 1760px;
+  max-width: calc(1530px + 10rem);
   margin-left: auto;
 }
 
-#hero header .chart-button {
+header .chart-button {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 0 128px 0 48px;
 }
 
-#hero header .chart-button img {
+header .chart-button img {
   width: 18px;
 }
 
-#hero header .chart-button a {
+header .chart-button a {
   color: #EAC666;
   font-family: "Inter SemiBold";
   font-size: 0.75rem;
 }
 
-#hero header nav img {
+header nav img {
   width: 36px;
   cursor: pointer;
 }
 
-#hero #logo img {
+#logo img {
   height: 80px;
   width: auto;
 }
 
-#hero .select-wrapper {
+.select-wrapper {
   position: relative;
   display: inline-block;
 }
 
-#hero .select-wrapper select {
+.select-wrapper select {
   width: 276px;
   height: 48px;
   border-radius: 256px;
@@ -230,11 +227,11 @@ main {
   appearance: none;
 }
 
-#hero .select-wrapper select:focus {
+.select-wrapper select:focus {
   outline: none;
 }
 
-#hero .select-wrapper::after {
+.select-wrapper::after {
   content: "";
   position: absolute;
   right: 1rem;
@@ -247,15 +244,24 @@ main {
   pointer-events: none;
 }
 
-#hero .prices {
+.prices {
   border-right: 1px solid #2D2D2D;
   padding-right: 48px;
 }
 
-#hero .price {
+.prices .column {
+  width: 120px;
+}
+
+.price {
   padding-left: 1rem;
   font-family: "Inter SemiBold";
   margin-top: 0.35rem;
+}
+
+#hero {
+  position: relative;
+  z-index: 2;
 }
 
 .info {
@@ -387,6 +393,37 @@ main {
   padding-bottom: 8rem;
 }
 
+#featured-products .product-card:hover {
+  transform: translateY(-5px);
+}
+
+#featured-products .product-card.animate {
+  animation: slideUpCards 0.6s ease-out forwards;
+}
+
+#featured-products .product-card:nth-child(1).animate {
+  animation-delay: 0s;
+}
+
+#featured-products .product-card:nth-child(2).animate {
+  animation-delay: 0.3s;
+}
+
+#featured-products .product-card:nth-child(3).animate {
+  animation-delay: 0.6s;
+}
+
+@keyframes slideUpCards {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #featured-products .product-card {
   flex: 1;
   background-color: #000;
@@ -396,6 +433,9 @@ main {
   flex-direction: column;
   align-items: center;
   padding: 32px;
+  opacity: 0;
+  transition: transform 0.3s ease;
+  transform: translateY(40px);
 }
 
 #featured-products .product-card img {

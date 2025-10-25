@@ -192,19 +192,16 @@ main {
   font-size: 0.75rem;
 }
 
-// Hero Section
-#hero {
-  position: relative;
-  z-index: 2;
-
-  header {
+header {
     display: flex;
     justify-content: space-between;
     width: 100%;
     position: relative;
     top: -200px;
+    z-index: 5;
+      padding-right: 4rem;
     animation: slideDown 0.75s ease-out 0.75s forwards;
-    max-width: 1760px;
+    max-width: calc(1530px + 10rem);
     margin-left: auto;
 
     .chart-button {
@@ -274,6 +271,9 @@ main {
   .prices {
     border-right: 1px solid $border-medium;
     padding-right: 48px;
+    .column {
+        width: 120px;
+      }
   }
 
   .price {
@@ -281,6 +281,10 @@ main {
     font-family: "Inter SemiBold";
     margin-top: 0.35rem;
   }
+// Hero Section
+#hero {
+  position: relative;
+  z-index: 2;
 }
 
 // Info Section
@@ -412,6 +416,37 @@ main {
     width: 100%;
     padding-bottom: 8rem;
   }
+                                                                                                                                                                                                                                                                .product-card:hover {
+                                                                                                                                                                                                                                                                  transform: translateY(-5px);
+                                                                                                                                                                                                                                                                }
+                                                                                                                                
+                                                                                                                                                                                                                                                                .product-card.animate {
+                                                                                                                                                                                                                                                                  animation: slideUpCards 0.6s ease-out forwards;
+                                                                                                                                                                                                                                                                }
+                                                                                                                                
+                                                                                                                                                                                                                                                                .product-card:nth-child(1).animate {
+                                                                                                                                                                                                                                                                  animation-delay: 0s;
+                                                                                                                                                                                                                                                                }
+                                                                                                                                
+                                                                                                                                                                                                                                                                .product-card:nth-child(2).animate {
+                                                                                                                                                                                                                                                                  animation-delay: 0.3s;
+                                                                                                                                                                                                                                                                }
+                                                                                                                                
+                                                                                                                                                                                                                                                                .product-card:nth-child(3).animate {
+                                                                                                                                                                                                                                                                  animation-delay: 0.6s;
+                                                                                                                                                                                                                                                                }
+                                                                                                                                
+                                                                                                                                                                                                                                                                @keyframes slideUpCards {
+                                                                                                                                                                                                                                                                  from {
+                                                                                                                                                                                                                                                                    opacity: 0;
+                                                                                                                                                                                                                                                                    transform: translateY(40px);
+                                                                                                                                                                                                                                                                  }
+                                                                                                                                
+                                                                                                                                                                                                                                                                  to {
+                                                                                                                                                                                                                                                                    opacity: 1;
+                                                                                                                                                                                                                                                                    transform: translateY(0);
+                                                                                                                                                                                                                                                                  }
+                                                                                                                                                                                                                                                                }
 
   .product-card {
     flex: 1;
@@ -422,6 +457,9 @@ main {
     flex-direction: column;
     align-items: center;
     padding: 32px;
+    opacity: 0;
+      transition: transform 0.3s ease;
+      transform: translateY(40px);
 
     img {
       width: 264px;
