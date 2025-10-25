@@ -44,6 +44,7 @@ p {
 body{
   background-color: $base-color;
   color: $text-color;
+  overflow-x: hidden;
   padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -51,17 +52,78 @@ body{
     align-items: center;
   }
   
-  main {
-    max-width: 1536px;
-    width: 100%;
+#animated-hero-image {
+  position: absolute;
+  animation: slideIn 0.5s ease-in-out forwards;
+  left: 0;
+  width: 85%;
+  z-index: 1;
+}
+
+#formula {
+  position: absolute;
+  animation: slideLeftToRight 1s ease-in-out forwards;
+  left: -100vw;
+  top: 320px;
+  width: 100%;
+  transform: scale(0.1);
+  z-index: 1;
+}
+
+@keyframes slideIn {
+  0% {
+    top: -300px;
+    opacity: 0;
+  }
+
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeftToRight {
+  0% {
+    left: -100vw;
+    transform: scale(0.1);
+    opacity: 0;
+  }
+
+  100% {
+    left: -300px;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+main {
+  width: 100%;
   }
   
   #hero {
+    position: relative;
+      z-index: 2;
     header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       width: 100%;
+      position: relative;
+        top: -200px;
+        animation: slideDown 0.75s ease-out 0.75s forwards;
+        max-width: 1760px;
+        margin-left: auto;
+      
+        @keyframes slideDown {
+          0% {
+            top: -300px;
+            opacity: 0;
+          }
+      
+          100% {
+            top: 0;
+            opacity: 1;
+          }
+        }
   
       .chart-button {
         display: flex;
@@ -99,6 +161,7 @@ body{
       gap: 60px;
   
       &.no-gap {
+        margin-left: auto;
         gap: 0;
       }
     }
@@ -177,4 +240,153 @@ body{
       margin: 0;
       margin-top: 0.35rem;
     }
+}
+.info {
+  max-width: 1536px;
+  margin: auto;
+  margin-top: 20vh;
+  position: relative;
+  right: -100vw;
+  transform: scale(0.5);
+  /* animate from right to left on page init, delay 0.15s */
+  animation: slideRightToLeft 0.5s ease-in-out 0.3s forwards;
+
+  @keyframes slideRightToLeft {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+      right: -100vw;
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      right: 0;
+    }
+  }
+
+  h1 {
+    font-family: "Gilmer Medium";
+    font-size: 4.25rem;
+    max-width: 750px;
+    width: 100%;
+
+    .golden {
+      font-size: 4.25rem !important;
+      text-wrap: nowrap;
+    }
+  }
+
+  .cta-section {
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .cta-primary {
+    border-radius: 256px;
+    height: 48px;
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0A0A0A;
+    font-family: "Inter Medium";
+    font-size: 0.9375rem;
+    text-decoration: none;
+    background: transparent linear-gradient(211deg, #B87C1D 0%, #EAC666 45%, #EAC666 100%) 0% 0% no-repeat padding-box;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+
+  .cta-secondary {
+    height: 48px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #EAC666;
+    font-family: "Inter Medium";
+    text-decoration: none;
+    font-size: 0.9375rem;
+    gap: 1.5rem;
+
+    &:hover {
+      transform: scale(1.1);
+      text-decoration: underline;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    img {
+      width: 20px;
+      height: auto;
+    }
+  }
+
+  .coins {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    width: fit-content;
+    margin-left: -100px;
+
+    #coin-silver {
+      width: 265px;
+      height: auto;
+      position: relative;
+      left: 100px;
+    }
+
+    #coin-gold {
+      width: 518px;
+      height: auto;
+    }
+  }
+
+  .scroller {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+    top: 300px;
+    position: relative;
+
+    img {
+      position: relative;
+      animation: upAndDown 1.5s ease-in-out infinite;
+    }
+
+    @keyframes upAndDown {
+      0% {
+        top: 0;
+      }
+
+      50% {
+        top: 20px;
+      }
+
+      100% {
+        top: 0;
+      }
+    }
+
+    .horizontal-line {
+      width: 1px;
+      height: 208px;
+      background-color: #404040;
+    }
+  }
+}
+
+#featured-products {
+  max-width: 1536px;
+  margin-top: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
