@@ -12,5 +12,10 @@
 - Used extension "Live Server" for local development server
 
 ## Potential Improvements
+
 - Sticky header
 - Mobile responsiveness (Currently designed for 1280 - 1920px width screens)
+
+## Issues
+
+- Font "Gilmer Regular" is not rendered in correct weight (200) despite being correctly imported and applied in CSS

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motorsport Legends</title>
     <link rel="stylesheet" type="text/css" href="./assets/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/styles/scroller.css">
     <!-- Favicon -->
 </head>
 <body>
@@ -65,9 +66,54 @@
           <img id="coin-gold" src="./assets/images/hill-mince@2x.png" alt="Motorsport Legends mince zlato" />
         </div>
       </div>
-      <div id="featured-products">
-        <h2>Naše produkty</h2>
+    </div>
+    <div id="featured-products">
+      <div class="featured-products-content">
+        <h3>V současné době startujeme první etapu</h3>
+        <h2>prvních 12 mistrů světa F1</h2>
+        <div class="products-row">
+          <div class="product-card">
+            <img src="./assets/images/hill@2x.png" alt="Produkt 1" />
+            <h4>Graham Hill</h4>
+            <h5>Formula One World Champion</h5>
+            <p class="year">1962, 1968</p>
+            <a href="#" class="cta-primary">Investiční mince</a>
+          </div>
+          <div class="product-card">
+            <img src="./assets/images/alan@2x.png" alt="Produkt 1" />
+            <h4>Alan Jones</h4>
+            <h5>F1 Winner</h5>
+            <p class="year">1980</p>
+            <a href="#" class="cta-primary">Investiční mince</a>
+          </div>
+          <div class="product-card">
+            <img src="./assets/images/nigel@2x.png" alt="Produkt 1" />
+            <h4>Nigel Mansell</h4>
+            <h5>Formula One World Champion</h5>
+            <p class="year">1992</p>
+            <a href="#" class="cta-primary">Investiční mince</a>
+          </div>
+        </div>
       </div>
       </main>
+      <nav class="scroll-nav">
+        <div class="scroll-nav__container">
+          <div class="scroll-nav__line"></div>
+          <div class="scroll-nav__progress" id="progress-line"></div>
+      
+          <div class="scroll-nav__sections">
+            <button class="scroll-nav__item" data-section="hero">
+              <span class="scroll-nav__label">Úvod</span>
+              <div class="scroll-nav__dot"></div>
+            </button>
+      
+            <button class="scroll-nav__item" data-section="featured-products">
+              <span class="scroll-nav__label">Mince</span>
+              <div class="scroll-nav__dot"></div>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <script src="./assets/scripts/scroller.js"></script>
 </body>
 </html>
