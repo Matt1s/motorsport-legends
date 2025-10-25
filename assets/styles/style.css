@@ -1,54 +1,103 @@
-/* Use ../fonts/Gilmer-Medium.otf & Gilmer-Regular.otf */
 @font-face {
   font-family: 'Gilmer Medium';
   src: url("../fonts/Gilmer-Medium.otf") format("opentype");
   font-weight: 500;
-  font-style: normal;
 }
 
 @font-face {
   font-family: 'Gilmer Regular';
   src: url("../fonts/Gilmer-Regular.otf") format("opentype");
   font-weight: 400;
-  font-style: normal;
 }
 
-/* Use ../fonts/Inter-Medium.ttf, Inter-Regular.ttf & Inter-SemiBold.ttf */
 @font-face {
   font-family: 'Inter Medium';
   src: url("../fonts/Inter-Medium.ttf") format("truetype");
   font-weight: 500;
-  font-style: normal;
 }
 
 @font-face {
   font-family: 'Inter Regular';
   src: url("../fonts/Inter-Regular.ttf") format("truetype");
   font-weight: 400;
-  font-style: normal;
 }
 
 @font-face {
   font-family: 'Inter SemiBold';
   src: url("../fonts/Inter-SemiBold.ttf") format("truetype");
   font-weight: 600;
-  font-style: normal;
 }
 
-p {
+@keyframes slideIn {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeftToRight {
+  from {
+    left: -100vw;
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  to {
+    left: -300px;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRightToLeft {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+    right: -100vw;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    right: 0;
+  }
+}
+
+@keyframes upAndDown {
+  0%,
+100% {
+    top: 0;
+  }
+  50% {
+    top: 20px;
+  }
+}
+
+* {
   margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: #0A0A0A;
   color: #F7F7F7;
   overflow-x: hidden;
-  padding: 0;
   padding-top: 2rem;
-  margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
 }
 
@@ -70,30 +119,6 @@ body {
   z-index: 1;
 }
 
-@keyframes slideIn {
-  0% {
-    top: -300px;
-    opacity: 0;
-  }
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes slideLeftToRight {
-  0% {
-    left: -100vw;
-    transform: scale(0.1);
-    opacity: 0;
-  }
-  100% {
-    left: -300px;
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 main {
   width: 100%;
   display: flex;
@@ -112,12 +137,35 @@ main {
   font-family: "Inter Medium";
   font-size: 0.9375rem;
   text-decoration: none;
-  background: transparent linear-gradient(211deg, #B87C1D 0%, #EAC666 45%, #EAC666 100%) 0% 0% no-repeat padding-box;
+  background: linear-gradient(211deg, #B87C1D 0%, #EAC666 45%, #EAC666 100%);
 }
 
 .cta-primary:hover {
   transform: scale(1.1);
   transition: transform 0.2s ease-in-out;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.row.no-gap {
+  margin-left: auto;
+  gap: 0;
+}
+
+.golden {
+  font-family: "Inter SemiBold";
+  color: #EAC666;
+  font-size: 0.75rem;
+}
+
+.silver {
+  font-family: "Inter SemiBold";
+  color: #BCBCBC;
+  font-size: 0.75rem;
 }
 
 #hero {
@@ -127,7 +175,6 @@ main {
 
 #hero header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   position: relative;
@@ -137,30 +184,15 @@ main {
   margin-left: auto;
 }
 
-@keyframes slideDown {
-  0% {
-    top: -300px;
-    opacity: 0;
-  }
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
-
 #hero header .chart-button {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
   gap: 16px;
-  padding-left: 48px;
-  padding-right: 128px;
+  padding: 0 128px 0 48px;
 }
 
 #hero header .chart-button img {
   width: 18px;
-  height: auto;
 }
 
 #hero header .chart-button a {
@@ -171,21 +203,7 @@ main {
 
 #hero header nav img {
   width: 36px;
-  height: auto;
   cursor: pointer;
-}
-
-#hero .row {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 60px;
-}
-
-#hero .row.no-gap {
-  margin-left: auto;
-  gap: 0;
 }
 
 #hero #logo img {
@@ -200,26 +218,19 @@ main {
 
 #hero .select-wrapper select {
   width: 276px;
-  font-family: "Inter Medium";
   height: 48px;
   border-radius: 256px;
   background-color: transparent;
   border: 1px solid #303030;
   color: #9E9E9E;
   padding: 0 4rem 0 1rem;
+  font-family: "Inter Medium";
   font-size: 0.875rem;
   cursor: pointer;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
 }
 
-#hero .select-wrapper select option {
-  color: #9E9E9E;
-  font-size: 0.875rem;
-}
-
-#hero .select-wrapper:focus-within select {
+#hero .select-wrapper select:focus {
   outline: none;
 }
 
@@ -236,20 +247,6 @@ main {
   pointer-events: none;
 }
 
-#hero .golden {
-  font-family: "Inter SemiBold";
-  color: #EAC666;
-  font-size: 0.75rem;
-  margin-bottom: 0;
-}
-
-#hero .silver {
-  font-family: "Inter SemiBold";
-  color: #BCBCBC;
-  font-size: 0.75rem;
-  margin-bottom: 0;
-}
-
 #hero .prices {
   border-right: 1px solid #2D2D2D;
   padding-right: 48px;
@@ -258,39 +255,22 @@ main {
 #hero .price {
   padding-left: 1rem;
   font-family: "Inter SemiBold";
-  margin: 0;
   margin-top: 0.35rem;
 }
 
 .info {
   max-width: 1536px;
-  margin: auto;
-  margin-top: 20vh;
+  margin: 20vh auto 0;
   position: relative;
   right: -100vw;
   transform: scale(0.5);
-  /* animate from right to left on page init, delay 0.15s */
   animation: slideRightToLeft 0.5s ease-in-out 0.3s forwards;
-}
-
-@keyframes slideRightToLeft {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-    right: -100vw;
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    right: 0;
-  }
 }
 
 .info h1 {
   font-family: "Gilmer Medium";
   font-size: 4.25rem;
   max-width: 750px;
-  width: 100%;
 }
 
 .info h1 .golden {
@@ -311,11 +291,11 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1.5rem;
   color: #EAC666;
   font-family: "Inter Medium";
-  text-decoration: none;
   font-size: 0.9375rem;
-  gap: 1.5rem;
+  text-decoration: none;
 }
 
 .info .cta-secondary:hover {
@@ -326,12 +306,10 @@ main {
 
 .info .cta-secondary img {
   width: 20px;
-  height: auto;
 }
 
 .info .coins {
   display: flex;
-  flex-direction: row;
   align-items: flex-end;
   width: fit-content;
   margin-left: -100px;
@@ -339,20 +317,17 @@ main {
 
 .info .coins #coin-silver {
   width: 265px;
-  height: auto;
   position: relative;
   left: 100px;
 }
 
 .info .coins #coin-gold {
   width: 518px;
-  height: auto;
 }
 
 .info .scroller {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
   gap: 32px;
   top: 300px;
@@ -362,18 +337,6 @@ main {
 .info .scroller img {
   position: relative;
   animation: upAndDown 1.5s ease-in-out infinite;
-}
-
-@keyframes upAndDown {
-  0% {
-    top: 0;
-  }
-  50% {
-    top: 20px;
-  }
-  100% {
-    top: 0;
-  }
 }
 
 .info .scroller .horizontal-line {
@@ -389,10 +352,7 @@ main {
   align-items: center;
   position: relative;
   z-index: 3;
-  background-image: url("../images/formula-bottom.svg");
-  background-repeat: no-repeat;
-  background-position: 45vw 45vh;
-  background-size: 120%;
+  background: url("../images/formula-bottom.svg") no-repeat 45vw 45vh/120%;
   width: 100%;
 }
 
@@ -402,14 +362,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 0rem;
 }
 
 #featured-products h3 {
   font-family: "Gilmer Regular";
   font-size: 1.5rem;
-  color: #F7F7F7;
-  margin: 0;
   font-weight: 200;
   margin-bottom: 1rem;
 }
@@ -419,44 +376,36 @@ main {
   font-size: 3.5rem;
   font-weight: 200;
   color: #EAC666;
-  margin: 0;
-  margin-top: 8px;
-  margin-bottom: 6rem;
+  margin: 8px 0 6rem;
 }
 
 #featured-products .products-row {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   gap: 8px;
-  align-items: center;
   width: 100%;
   padding-bottom: 8rem;
 }
 
 #featured-products .product-card {
   flex: 1;
-  background-color: #000000;
+  background-color: #000;
   border-radius: 8px;
   border: 1px solid #1D1D1D;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
   padding: 32px;
 }
 
 #featured-products .product-card img {
   width: 264px;
-  height: auto;
 }
 
 #featured-products .product-card h4 {
   font-size: 2rem;
-  color: #F7F7F7;
   font-family: "Gilmer Regular";
   font-weight: 200;
-  margin: 0;
   margin-top: 32px;
 }
 
@@ -469,9 +418,7 @@ main {
 
 #featured-products .product-card .year {
   font-size: 1rem;
-  color: #FFFFFF;
   font-family: "Inter Regular";
-  margin: 0;
 }
 
 #featured-products .product-card .cta-primary {
