@@ -468,9 +468,11 @@ header nav img {
   z-index: 5;
   top: -5rem;
   position: relative;
-  left: 4rem img;
-  left-position: relative;
-  left-animation: upAndDown 1.5s ease-in-out infinite;
+}
+
+.scroller img {
+  position: relative;
+  animation: upAndDown 1.5s ease-in-out infinite;
 }
 
 .scroller .horizontal-line {
