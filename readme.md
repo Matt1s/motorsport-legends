@@ -6,6 +6,8 @@
 
 Premium e-commerce landing page showcasing investment coins featuring Formula 1 World Champions. Built with semantic HTML5, SCSS stylesheets, and vanilla JavaScript. Features responsive design, real-time precious metal pricing, and interactive product showcase. Fully optimized for SEO with complete meta tags, Open Graph support, descriptive alt text, and ARIA labels for accessibility. Implements modern image optimization with WebP format, 2x retina support, and SVG icons. Smooth scroll navigation with section indicators. 
 
+**Development Time:** 6 to 6.5 hours
+
 ## Setup Instructions
 
 - Clone repository
