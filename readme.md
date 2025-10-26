@@ -23,3 +23,14 @@ Premium e-commerce landing page showcasing investment coins featuring Formula 1 
 ## Issues
 
 - Font "Gilmer Regular" is not rendered in correct weight (200) despite being correctly imported and applied in CSS
+
+## Misc
+
+### PageSpeed Insights Results
+![PageSpeed Desktop Results](./misc/pagespeed-desktop-results.png)
+
+### Open Graph Preview
+![Open Graph Preview](./misc/open-graph-preview.png)
+
+### Seobility Results
+![Seobility Results](./misc/seobility-results.png)
