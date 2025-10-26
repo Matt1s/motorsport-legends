@@ -110,6 +110,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("../images/formula-bottom.svg");
+  background-repeat: no-repeat;
+  background-position: 110% 112%;
+  background-size: 1000px;
 }
 
 main {
@@ -330,6 +334,7 @@ header nav img {
   flex: 1;
   display: flex;
   align-items: flex-end;
+  justify-content: center;
   width: fit-content;
   margin-left: -6.25rem;
 }
@@ -351,7 +356,6 @@ header nav img {
   align-items: center;
   position: relative;
   z-index: 3;
-  background: url("../images/formula-bottom.svg") no-repeat 45vw 45vh/120%;
   width: 100%;
 }
 
@@ -460,11 +464,9 @@ header nav img {
   z-index: 5;
   top: -5rem;
   position: relative;
-}
-
-.scroller img {
-  position: relative;
-  animation: upAndDown 1.5s ease-in-out infinite;
+  left: 4rem img;
+  left-position: relative;
+  left-animation: upAndDown 1.5s ease-in-out infinite;
 }
 
 .scroller .horizontal-line {
@@ -492,6 +494,10 @@ header nav img {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+  .scroller, #featured-products {
+    position: relative;
+    left: 1rem;
+  }
   header {
     max-width: 100%;
     padding-left: 2rem;
@@ -509,9 +515,8 @@ header nav img {
 }
 
 @media (max-width: 1650px) {
-  .info .coins {
-    position: relative;
-    left: -5rem;
+  #animated-hero-image {
+    width: 95%;
   }
   #coin-silver {
     width: 176px !important;

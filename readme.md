@@ -15,6 +15,8 @@
 
 - Sticky header
 - Mobile responsiveness (Currently designed for 1280 - 1920px width screens)
+- Use .svg for arrow up/down icons instead of HTML entities
+- burger, cart, chart-icon should be .svg instead of .png
 
 ## Issues
 
