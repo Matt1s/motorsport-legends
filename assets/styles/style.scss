@@ -324,6 +324,9 @@ header {
   left: -20px;
   width: 85%;
   z-index: $z-animated;
+  img{
+    width: 100%;
+  }
 }
 
 #formula {

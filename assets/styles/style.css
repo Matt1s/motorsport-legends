@@ -294,6 +294,10 @@ header nav img {
   z-index: 1;
 }
 
+#animated-hero-image img {
+  width: 100%;
+}
+
 #formula {
   position: absolute;
   animation: slideLeftToRight 1s ease-in-out forwards;
